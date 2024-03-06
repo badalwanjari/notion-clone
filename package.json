@@ -37,6 +37,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.0",
+    "supabase": "^1.148.6",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
     "utf-8-validate": "^6.0.3",
