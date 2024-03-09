@@ -18,10 +18,11 @@ const migrateDb = async () => {
         await migrate(db, { migrationsFolder: "migrations" });
         console.log("Migrated Successfully");
     } catch (e) {
-        console.log("Client Error");
+        console.log("Client Error\n\n" + e);
+
     }
 };
 
-migrateDb();
+// migrateDb();
 
 export default db;
