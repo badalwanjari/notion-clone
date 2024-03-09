@@ -15,25 +15,32 @@ const  DashboardPage = async () => {
         return;
     }
 
-    const {data: subscription, error : subscriptionError} = await getUserSubscriptionStatus(user.id);
-    return <h1>Dashboard Page {user.id}</h1>
+    const workspace = await db.query.workspaces.findFirst({
+        where: (workspace, { eq }) => eq(workspace.workspaceOwner, user.id),
+    });
 
+    const { data: subscription, error: subscriptionError } = await getUserSubscriptionStatus(user.id);
 
-    try{
-        const workspace = await db.query.workspaces.findFirst({
-            where: (workspace, { eq }) => eq(workspace.workspaceOwner, user.id),
-          });
-        return redirect(`/dashboard/${workspace?.id}`)
-    }catch(e){
-        return (
+    if (subscriptionError) return;
 
-                <div className='bg-background h-screen w-full flex justify-center items-center'>
-                    <DashboardSetup user={user} subscription={subscription}></DashboardSetup>
-                </div>
-            );
-    }
+    if (!workspace)
+    return (
+      <div
+        className="bg-background
+        h-screen
+        w-screen
+        flex
+        justify-center
+        items-center
+  "
+      >
+        <DashboardSetup
+          user={user}
+          subscription={subscription}
+        />
+      </div>
+    );
 
-    
-}
-
+  redirect(`/dashboard/${workspace.id}`);
+};
 export default DashboardPage

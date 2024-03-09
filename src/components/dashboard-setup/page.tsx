@@ -3,7 +3,7 @@ import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader } from '../ui/card';
 
 interface dashboardSetupProps {
-    user : AuthUser,
+    user : AuthUser | null,
     subscription : {} | null
 }
 
