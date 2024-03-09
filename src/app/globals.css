@@ -57,3 +57,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+.animate-slide{
+  animation: 15s slide linear infinite;
+}
+
+@keyframes slide {
+  from{
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide_250s_linear {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide_250s_linear_reverse {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
