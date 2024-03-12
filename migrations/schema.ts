@@ -18,6 +18,7 @@ export const workspaces = pgTable("workspaces", {
 	workspaceOwner: uuid("workspace_owner").notNull(),
 	iconId: text("icon_id").notNull(),
 	data: text("data"),
+	title: text('title'),
 	inTrash: text("in_trash"),
 	logo: text("logo"),
 	bannerUrl: text("banner_url"),

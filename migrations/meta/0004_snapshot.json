@@ -1,72 +1,9 @@
 {
-  "id": "c1de57a6-e6aa-42c7-96c4-8a1d0ada191d",
-  "prevId": "de0077f0-0e16-4bcb-acae-55aa3568c447",
+  "id": "5c6f7c63-1fff-416b-b584-18e8c2e81713",
+  "prevId": "c1de57a6-e6aa-42c7-96c4-8a1d0ada191d",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "collaborators": {
-      "name": "collaborators",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "workspace_id": {
-          "name": "workspace_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "collaborators_workspace_id_workspaces_id_fk": {
-          "name": "collaborators_workspace_id_workspaces_id_fk",
-          "tableFrom": "collaborators",
-          "tableTo": "workspaces",
-          "columnsFrom": [
-            "workspace_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "collaborators_user_id_users_id_fk": {
-          "name": "collaborators_user_id_users_id_fk",
-          "tableFrom": "collaborators",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
     "files": {
       "name": "files",
       "schema": "",
@@ -82,8 +19,7 @@
           "name": "created_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": false
         },
         "title": {
           "name": "title",
@@ -119,13 +55,13 @@
           "name": "workspace_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "folder_id": {
           "name": "folder_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},
@@ -143,10 +79,10 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "files_folder_id_folders_id_fk": {
-          "name": "files_folder_id_folders_id_fk",
+        "files_folder_id_workspaces_id_fk": {
+          "name": "files_folder_id_workspaces_id_fk",
           "tableFrom": "files",
-          "tableTo": "folders",
+          "tableTo": "workspaces",
           "columnsFrom": [
             "folder_id"
           ],
@@ -175,8 +111,7 @@
           "name": "created_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": false
         },
         "title": {
           "name": "title",
@@ -212,7 +147,7 @@
           "name": "workspace_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},
@@ -371,8 +306,7 @@
           "name": "created_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": false
         },
         "workspace_owner": {
           "name": "workspace_owner",
